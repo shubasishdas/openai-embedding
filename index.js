@@ -1,10 +1,14 @@
 import fs from 'fs';
 import { encode } from 'gpt-3-encoder';
 import { Configuration, OpenAIApi } from 'openai';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 const storeEmbeddedData = (folderDirectory,fileName,embedData)=>{
@@ -96,6 +100,4 @@ const getSingleFolderEmbedData = async()=>{
 }
 
 getSingleFolderEmbedData();
-
-
 
